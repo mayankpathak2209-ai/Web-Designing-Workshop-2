@@ -1,123 +1,44 @@
-let employees=[];
+let fontSize = 16;
+let isVisible = true;
 
-function addEmployee(){
-
-let name=document.getElementById("name").value;
-let id=document.getElementById("id").value;
-let salary=document.getElementById("salary").value;
-let department=document.getElementById("department").value;
-
-if(name===""||id===""||salary===""||department===""){
-alert("Please fill all fields properly");
-return; 
+function changeHeading() {
+    let input = document.getElementById("inputText").value;
+    if (input !== "") {
+        document.getElementById("heading").innerText = input;
+    }
 }
 
-let employee={
-name:name,
-id:id,
-salary:Number(salary),
-department:department
-};
-
-employees.push(employee);
-
-alert("Employee "+name+" stored successfully");
-
-document.getElementById("name").value="";
-document.getElementById("id").value="";
-document.getElementById("salary").value="";
-document.getElementById("department").value="";
+function changeBackground() {
+    document.body.style.backgroundColor =
+    document.body.style.backgroundColor === "lightblue"
+    ? "palegreen"
+    : "lightblue";
 }
 
-function displayAll(){
-
-if(employees.length===0){
-alert("No employees stored");
-return;
+function increaseFont(){
+    fontSize += 2;
+    document.getElementById("para").style.fontSize = fontSize + "px";
 }
 
-let output="";
+function toggleParagraph(){
+    let para = document.getElementById("para");
 
-employees.forEach(function(emp){
-output+="Name: "+emp.name+
-" | ID: "+emp.id+
-" | Salary: "+emp.salary+
-" | Department: "+emp.department+"<br>";
-});
+    if (isVisible){
+        para.style.display = "none";
+    } else {
+        para.style.display = "block";
+    }
 
-document.getElementById("output").innerHTML=output;
+    isVisible = !isVisible;
 }
 
-function salaryAbove(){
+function resetPage(){
+    document.getElementById("heading").innerText = "Welcome to JavaScript Lab";
+    document.getElementById("inputText").value = "";
+    document.body.style.backgroundColor = "#eaeaea";
+    document.getElementById("para").style.fontSize = "16px";
+    document.getElementById("para").style.display = "block";
 
-let output="";
-
-for(let i=0;i<employees.length;i++){
-
-if(employees[i].salary>50000){
-
-output+="Name: "+employees[i].name+
-" | Salary: "+employees[i].salary+"<br>";
-}
-}
-
-if(output===""){
-output="No employees with salary greater than 50000";
-}
-
-document.getElementById("output").innerHTML=output;
-}
-
-function totalSalary(){
-
-let total=0;
-
-for(let i=0;i<employees.length;i++){
-total+=employees[i].salary;
-}
-
-document.getElementById("output").innerHTML="Total Salary: "+total;
-}
-
-function averageSalary(){
-
-if(employees.length===0){
-alert("No employee data available");
-return;
-}
-
-let total=0;
-
-for(let i=0;i<employees.length;i++){
-total+=employees[i].salary;
-}
-
-let avg=total/employees.length;
-
-document.getElementById("output").innerHTML="Average Salary: "+avg.toFixed(2);
-}
-
-function countDepartment(){
-
-let deptCount={};
-
-for(let i=0;i<employees.length;i++){
-
-let dept=employees[i].department;
-
-if(deptCount[dept]){
-deptCount[dept]++;
-}
-else{
-deptCount[dept]=1;
-}
-}
-
-let output="";
-
-for(let d in deptCount){
-output+=d+" : "+deptCount[d]+" employees<br>";
-}
-
-document.getElementById("output").innerHTML=output;
+    fontSize = 16;
+    isVisible = true;
 }

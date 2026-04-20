@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Student Result Calculator</title>
+<meta charset="UTF-8">
+<title>Employee Salary Management System</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
 <div class="container">
 
-<h2>Student Result Calculator</h2>
+<h2>Employee Salary Management System</h2>
 
-<label>Enter Number of Subjects:</label><br>
-<input type="number" id="subjects"><br><br>
+<input type="text" id="name" placeholder="Employee Name">
+<input type="text" id="id" placeholder="Employee ID">
+<input type="number" id="salary" placeholder="Salary">
+<input type="text" id="department" placeholder="Department">
 
-<button onclick="calculateResult()">Calculate Result</button>
+<button onclick="addEmployee()">Add Employee</button><br>
+<button onclick="displayAll()">Display All</button>
+<button onclick="salaryAbove()">Salary > 50000</button>
+<button onclick="totalSalary()">Total Salary</button>
+<button onclick="averageSalary()">Average Salary</button>
+<button onclick="countDepartment()">Count by Department</button>
 
-<div id="result"></div>
+<div id="output"></div>
 
 </div>
 
-<script src="src/main.jsx"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
